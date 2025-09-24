@@ -1,8 +1,7 @@
-﻿{
+{
   "name": "signal-hunter",
   "version": "1.0.0",
   "scripts": {
-    "build": "cd client && npm install && npm run build && cd ../server && npm install",
     "start": "cd server && node src/index.js"
   }
 }
