@@ -1,0 +1,11 @@
+# Create nixpacks.toml file
+@'
+[phases.setup]
+nixPkgs = ["nodejs-18_x"]
+
+[phases.install]
+cmds = ["cd server && npm install"]
+
+[start]
+cmd = "cd server && node src/index.js"
+'@ | Out-File -FilePath nixpacks.toml -Encoding UTF8NoBOM
