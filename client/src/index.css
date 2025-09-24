@@ -1,0 +1,419 @@
+/* client/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   THEME VARIABLES
+   ============================================ */
+:root {
+  /* Dark Mode Colors (Default) */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0f1629;
+  --bg-tertiary: #1a2035;
+  --bg-hover: #242b45;
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  
+  --accent: #8b5cf6;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/* Light Mode */
+.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-hover: #e2e8f0;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  
+  --accent: #8b5cf6;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Main Background */
+.min-h-screen {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  min-height: 100vh;
+}
+
+/* Dark mode gradient overlay */
+body:not(.light-mode) .min-h-screen::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ============================================
+   CARDS & SURFACES
+   ============================================ */
+.bg-white\/10 {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(10px);
+}
+
+.bg-white\/5 {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+}
+
+.bg-white\/20 {
+  background: var(--bg-hover);
+  border: 1px solid var(--border-default);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+.text-white { color: var(--text-primary) !important; }
+.text-blue-200 { color: var(--text-secondary) !important; }
+.text-blue-300 { color: var(--text-secondary) !important; }
+.text-gray-400 { color: var(--text-muted) !important; }
+.text-gray-300 { color: var(--text-secondary) !important; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button {
+  transition: all 0.2s ease;
+}
+
+/* Primary buttons */
+.bg-blue-600, 
+.bg-gradient-to-r {
+  background: var(--primary) !important;
+}
+
+.bg-blue-600:hover,
+.bg-gradient-to-r:hover {
+  background: var(--primary-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Secondary buttons */
+button.bg-white\/10:not(.bg-gradient-to-r) {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+}
+
+button.bg-white\/10:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--primary);
+}
+
+/* ============================================
+   INPUTS & FORMS
+   ============================================ */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-default);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+input[type="checkbox"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+input[type="checkbox"]:hover {
+  border-color: var(--primary);
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+  background: var(--bg-secondary);
+}
+
+thead {
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-default);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animation Classes */
+.animate-fade-in { animation: fadeIn 0.5s ease; }
+.animate-pulse { animation: pulse 2s infinite; }
+.animate-shimmer { animation: shimmer 2s infinite; }
+.animate-blob { animation: blob 7s infinite; }
+.animate-shake { animation: shake 0.5s ease-out; }
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Animation Delays */
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* ============================================
+   QUICK GROUPS
+   ============================================ */
+.quick-group-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.quick-group-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.loading-bar {
+  background: var(--bg-tertiary);
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.border-white\/10 { border-color: var(--border-subtle) !important; }
+.border-white\/20 { border-color: var(--border-default) !important; }
+
+/* Fix Tailwind color overrides */
+.bg-gray-900 { background: var(--bg-primary) !important; }
+.bg-blue-900 { background: var(--bg-secondary) !important; }
+.bg-purple-900 { background: var(--bg-tertiary) !important; }
+
+/* ============================================
+   LOCATION MAP SPECIFIC STYLES
+   ============================================ */
+.map-container {
+  background: var(--bg-tertiary);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.map-container svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-popup {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* ============================================
+   DARK MODE SPECIFIC OVERRIDES
+   ============================================ */
+body:not(.light-mode) {
+  .bg-gray-800 {
+    background: var(--bg-secondary) !important;
+  }
+  
+  .bg-gray-700 {
+    background: var(--bg-tertiary) !important;
+  }
+  
+  .border-gray-700 {
+    border-color: var(--border-default) !important;
+  }
+}
+
+/* ============================================
+   LIGHT MODE SPECIFIC OVERRIDES
+   ============================================ */
+body.light-mode {
+  .bg-gray-50 {
+    background: var(--bg-primary) !important;
+  }
+  
+  .bg-white {
+    background: var(--bg-secondary) !important;
+  }
+  
+  .border-gray-200 {
+    border-color: var(--border-default) !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

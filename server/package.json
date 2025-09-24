@@ -1,0 +1,21 @@
+{
+  "name": "signal-hunter-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.0",
+    "p-limit": "^5.0.0",
+    "node-cache": "^5.1.2",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
